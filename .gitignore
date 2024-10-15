@@ -1,0 +1,37 @@
+# Database
+*.sql*
+database
+
+# Nuxt
+.cache
+.data
+.nitro
+.nuxt
+.output
+dist
+
+# Packages
+node_modules
+
+# Logs
+*.log
+logs
+
+# Editors
+.DS_Store
+.fleet
+.idea
+.vscode/*
+*.njsproj
+*.ntvs*
+*.sln
+*.suo
+*.sw?
+
+# Environment
+.env
+.env.*
+
+# Keep
+!.env.example
+!.gitkeep

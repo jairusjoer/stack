@@ -1,0 +1,20 @@
+services:
+  # https://docs.directus.io/self-hosted/quickstart.html
+  directus:
+    image: directus/directus
+    ports:
+      - 8055:8055
+    volumes:
+      - ./directus/database:/directus/database
+      - ./directus/uploads:/directus/uploads
+      - ./directus/extensions:/directus/extensions
+    environment:
+      # https://docs.directus.io/self-hosted/config-options.html
+      SECRET: '4zda5i6YyfMjERa4GMPUA47jJEmSWMtE'
+      ADMIN_EMAIL: 'admin@example.com'
+      ADMIN_PASSWORD: 'd1r3ctu5'
+      DB_CLIENT: 'sqlite3'
+      DB_FILENAME: './database/directus.db'
+      WEBSOCKETS_ENABLED: true
+      CORS_ENABLED: true
+      CORS_ORIGIN: 'http://localhost:3000'
