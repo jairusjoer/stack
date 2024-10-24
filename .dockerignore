@@ -1,6 +1,12 @@
-# Database
-*.sql*
-database
+# Directus
+directus/database
+directus/extensions
+directus/uploads
+
+# Docker
+.dockerignore
+compose.yaml
+dockerfile
 
 # Editors
 .DS_Store
@@ -17,13 +23,10 @@ database
 .env
 .env.*
 
-# Nuxt
-.cache
-.data
-.nitro
-.nuxt
-.output
-dist
+# Files
+.git
+.gitignore
+*.md
 
 # Logs
 *.log
@@ -31,7 +34,3 @@ logs
 
 # Packages
 node_modules
-
-# Keep
-!.env.example
-!.gitkeep

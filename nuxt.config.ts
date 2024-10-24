@@ -5,5 +5,10 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
   alias: {
     "~directus": "../directus",
+  },
+  runtimeConfig: {
+    public: {
+      DIRECTUS_URL: process.env.NUXT_PUBLIC_DIRECTUS_URL
+    }
   }
 })

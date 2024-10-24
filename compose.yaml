@@ -1,7 +1,16 @@
 services:
+  nuxt:
+    container_name: nuxt
+    build: ./
+    restart: always
+    ports:
+      - 3000:3000
+
   # https://docs.directus.io/self-hosted/quickstart.html
   directus:
+    container_name: directus
     image: directus/directus
+    restart: always
     ports:
       - 8055:8055
     volumes:
