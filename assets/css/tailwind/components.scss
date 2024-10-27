@@ -1,0 +1,29 @@
+@tailwind components;
+
+@layer components {
+  [class^='button-'] {
+    @apply flex h-12 items-center justify-center gap-1 rounded p-4 text-sm font-medium leading-4;
+  }
+
+  $colors: neutral, brand, informative, successful, cautionary, destructive;
+  $variants: bold, subtle, outline, ghost;
+
+  @each $color in $colors {
+    @each $variant in $variants {
+      .button-#{$color}-#{$variant} {
+        @if ($variant == 'bold') {
+          background: var(--#{$color});
+          color: var(--#{$color}-subtle);
+        } @else {
+          color: var(--#{$color});
+        }
+        @if ($variant == 'subtle') {
+          background: var(--#{$color}-subtle);
+        }
+        @if ($variant == 'outline') {
+          box-shadow: 0 0 0 var(--border-width) var(--#{$color}-subtle);
+        }
+      }
+    }
+  }
+}

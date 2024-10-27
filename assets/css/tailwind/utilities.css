@@ -1,0 +1,34 @@
+@tailwind utilities;
+
+@layer utilities {
+  @keyframes wiggle {
+    0% {
+      transform: rotate(0deg);
+    }
+    33.33% {
+      transform: rotate(10deg);
+    }
+    66.66% {
+      transform: rotate(-10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .animate-wiggle {
+    animation: wiggle 600ms ease-in-out;
+  }
+
+  .rich-text {
+    @apply prose prose-brand max-w-none marker:text-brand prose-headings:scroll-my-36 prose-headings:text-foreground prose-a:text-brand prose-blockquote:border-l-brand prose-kbd:bg-background-subtle;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
