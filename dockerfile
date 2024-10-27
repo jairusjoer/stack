@@ -17,8 +17,4 @@ COPY . .
 RUN npm install
 RUN npm run build
 
-EXPOSE 3000
-
-ENV NUXT_PUBLIC_DIRECTUS_URL=${NUXT_PUBLIC_DIRECTUS_URL}
-
 CMD [ "npm", "start" ]

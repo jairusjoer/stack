@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      DIRECTUS_URL: process.env.NUXT_PUBLIC_DIRECTUS_URL
+      PUBLIC_URL: process.env.PUBLIC_URL
     }
   }
 })

@@ -4,7 +4,7 @@ import type { PublicSchema } from '~/directus/collections/schema';
 export default defineNuxtPlugin(() => {
 
     const { public: publicConfig } = useRuntimeConfig();
-    const publicClient = createDirectus<PublicSchema>(publicConfig.DIRECTUS_URL!).with(rest());
+    const publicClient = createDirectus<PublicSchema>(publicConfig.PUBLIC_URL!).with(rest());
 
     return {
         provide: { publicClient, readItem, readItems },
