@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     "~directus": "../directus",
   },
   compatibilityDate: '2024-04-03',
-  css: ['~/assets/css/globals.css',],
+  css: ['~/assets/css/globals.scss',],
   devtools: { enabled: true },
   experimental: {
     inlineRouteRules: true,
