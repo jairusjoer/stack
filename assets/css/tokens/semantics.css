@@ -1,4 +1,6 @@
 :root {
+  color-scheme: light;
+
   /* Colors */
   --background: var(--zinc-100);
   --background-subtle: var(--zinc-50);
@@ -48,6 +50,8 @@
 
   /* Dark Mode */
   @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+
     --background: var(--zinc-950);
     --background-subtle: var(--zinc-900);
 

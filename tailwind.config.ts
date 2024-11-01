@@ -1,7 +1,6 @@
 import type { Config } from 'tailwindcss'
 
 // Plugins
-import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 
 const mix = (name: string) => {
@@ -104,5 +103,5 @@ export default <Partial<Config>>{
             }),
         }
     },
-    plugins: [forms, typography],
+    plugins: [typography],
 }

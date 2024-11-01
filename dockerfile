@@ -14,6 +14,7 @@ RUN apk add git
 
 # Copy the app, note .dockerignore
 COPY . .
+
 RUN npm install
 RUN npm run build
 

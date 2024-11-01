@@ -1,0 +1,37 @@
+@mixin general {
+    @apply bg-background-subtle border border-input placeholder:text-foreground-subtle;
+}
+
+.form-input{
+    @include general;
+    @apply rounded px-3 h-12 text-foreground;
+}
+
+.form-textarea{
+    @include general;
+    @apply rounded p-3 text-foreground;
+}
+
+.form-select,
+.form-multiselect{
+    @include general;
+    @apply space-y-1 rounded overflow-auto;
+
+    &:not([size]) {
+        @apply h-12;
+    }
+
+    option {
+        @apply px-3 flex gap-1 items-center h-12;
+
+        &:checked {
+         @apply bg-brand text-background;
+        }
+    }
+}
+
+.form-checkbox,
+.form-radio {
+    @include general;
+    @apply size-4 accent-brand;
+}
