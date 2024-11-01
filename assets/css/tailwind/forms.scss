@@ -1,37 +1,37 @@
 @mixin general {
-    @apply bg-background-subtle border border-input placeholder:text-foreground-subtle;
+  @apply border border-input bg-background-subtle placeholder:text-foreground-subtle;
 }
 
-.form-input{
-    @include general;
-    @apply rounded px-3 h-12 text-foreground;
+.form-input {
+  @include general;
+  @apply h-12 rounded px-3 text-foreground;
 }
 
-.form-textarea{
-    @include general;
-    @apply rounded p-3 text-foreground;
+.form-textarea {
+  @include general;
+  @apply rounded p-3 text-foreground;
 }
 
 .form-select,
-.form-multiselect{
-    @include general;
-    @apply space-y-1 rounded overflow-auto;
+.form-multiselect {
+  @include general;
+  @apply space-y-1 overflow-auto rounded;
 
-    &:not([size]) {
-        @apply h-12;
+  &:not([size]) {
+    @apply h-12;
+  }
+
+  option {
+    @apply flex h-12 items-center gap-1 px-3;
+
+    &:checked {
+      @apply bg-brand text-background;
     }
-
-    option {
-        @apply px-3 flex gap-1 items-center h-12;
-
-        &:checked {
-         @apply bg-brand text-background;
-        }
-    }
+  }
 }
 
 .form-checkbox,
 .form-radio {
-    @include general;
-    @apply size-4 accent-brand;
+  @include general;
+  @apply size-4 accent-brand;
 }

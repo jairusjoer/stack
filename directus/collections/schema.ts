@@ -1,5 +1,5 @@
-import type { Example } from "../collections/example";
+import type { Example } from '../collections/example';
 
 export interface PublicSchema {
-    examples: Example[];
+  examples: Example[];
 }

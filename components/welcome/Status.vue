@@ -8,11 +8,11 @@ const { data: health } = await useAsyncData('health', async () => {
 </script>
 
 <template>
-  <div class="inline-flex text-xs font-medium font-mono border leading-6 rounded">
+  <div class="inline-flex rounded border font-mono text-xs font-medium leading-6">
     <span class="px-2">Directus Status</span>
     <span
       :class="{
-        'px-2 rounded-[3px] uppercase': true,
+        'rounded-[3px] px-2 uppercase': true,
         'bg-successful text-successful-subtle': health?.status === 'ok',
         'bg-cautionary text-cautionary-subtle': health?.status === 'warn',
         'bg-destructive text-destructive-subtle': !health?.status || health?.status === 'error',
