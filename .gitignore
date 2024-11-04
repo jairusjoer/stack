@@ -1,6 +1,10 @@
 # Database
 *.sql*
-database
+
+# Directus
+directus/database/**
+directus/extensions/**
+directus/uploads/**
 
 # Editors
 .DS_Store
