@@ -15,4 +15,7 @@ export default defineNuxtConfig({
       PUBLIC_URL: process.env.PUBLIC_URL,
     },
   },
+  tailwindcss: {
+    viewer: false,
+  },
 });
