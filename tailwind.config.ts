@@ -4,7 +4,7 @@ import type { Config } from 'tailwindcss';
 import typography from '@tailwindcss/typography';
 
 const mix = (name: string) => {
-  return `color-mix(in srgb, transparent, var(${name}) calc(100% * <alpha-value>))`;
+  return `rgb(from var(${name}) r g b / <alpha-value>)`;
 };
 
 export default <Partial<Config>>{
