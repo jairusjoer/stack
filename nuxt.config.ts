@@ -18,4 +18,13 @@ export default defineNuxtConfig({
   tailwindcss: {
     viewer: false,
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern',
+        },
+      },
+    },
+  },
 });
