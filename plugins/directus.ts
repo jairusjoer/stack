@@ -44,6 +44,7 @@ const retrieveSchemaSnapshot = async (client: Awaited<ReturnType<typeof createAd
   } catch {
     schema = await client.request(schemaSnapshot());
     await writeFile('directus/schema.json', JSON.stringify(schema, null, 2));
+    console.info('\x1b[36m%s\x1b[0m', 'Directus', 'created schema snapshot')
   }
 
   const { diff } = await client.request(schemaDiff(schema));
@@ -51,6 +52,7 @@ const retrieveSchemaSnapshot = async (client: Awaited<ReturnType<typeof createAd
   if (diff) {
     schema = await client.request(schemaSnapshot());
     await writeFile('directus/schema.json', JSON.stringify(schema, null, 2));
+    console.info('\x1b[36m%s\x1b[0m', 'Directus', 'updated schema snapshot')
   }
 
   return schema;
