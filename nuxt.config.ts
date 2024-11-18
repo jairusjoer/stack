@@ -11,8 +11,13 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxtjs/tailwindcss'],
   runtimeConfig: {
+    admin: {
+      email: process.env.ADMIN_EMAIL,
+      password: process.env.ADMIN_PASSWORD,
+    },
+
     public: {
-      PUBLIC_URL: process.env.PUBLIC_URL,
+      url: process.env.PUBLIC_URL,
     },
   },
   tailwindcss: {

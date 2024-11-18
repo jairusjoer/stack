@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { serverHealth } from '@directus/sdk';
 
-const { $publicClient } = useNuxtApp();
+const { $directus } = useNuxtApp();
 
 const { data: health } = await useAsyncData('health', async () => {
-  return await $publicClient.request(serverHealth());
+  return await $directus.publicClient.request(serverHealth());
 });
 
 const refresh = async () => {
   try {
-    health.value = await $publicClient.request(serverHealth());
+    health.value = await $directus.publicClient.request(serverHealth());
     console.log(...ConsoleBadge('status', '#00BCD4'), 'Refreshed directus status');
   } catch (error) {
     health.value = null;
@@ -33,6 +33,7 @@ const refresh = async () => {
     >
       {{ health?.status || 'unreachable' }}
       <svg
+        aria-hidden="true"
         fill="none"
         height="12px"
         stroke-linecap="round"
@@ -43,7 +44,6 @@ const refresh = async () => {
         width="12px"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <title>Refresh</title>
         <path d="M21.1679 8C19.6247 4.46819 16.1006 2 11.9999 2C6.81459 2 2.55104 5.94668 2.04932 11"></path>
         <path d="M17 8H21.4C21.7314 8 22 7.73137 22 7.4V3"></path>
         <path d="M2.88146 16C4.42458 19.5318 7.94874 22 12.0494 22C17.2347 22 21.4983 18.0533 22 13"></path>
