@@ -21,7 +21,7 @@
   }
 
   .rich-text {
-    @apply prose prose-brand max-w-none marker:text-brand prose-headings:text-foreground prose-a:text-brand prose-blockquote:border-l-brand prose-kbd:bg-background-subtle;
+    @apply prose prose-brand max-w-none;
   }
 
   .no-scrollbar {
