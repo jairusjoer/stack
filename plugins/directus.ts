@@ -25,7 +25,10 @@ export default defineNuxtPlugin(async () => {
 
   if (import.meta.server) {
     provide.directus.adminClient = await createAdminClient(runtimeConfig);
-    await retrieveSchemaSnapshot(provide.directus.adminClient);
+
+    if (import.meta.dev) {
+      await retrieveSchemaSnapshot(provide.directus.adminClient);
+    }
   }
 
   return { provide };
