@@ -44,6 +44,10 @@
   /* Animations */
   --animation-duration: 150ms;
 
+  /* States */
+  --state-color: var(--foreground);
+  --state-blend: luminosity;
+
   @media (prefers-reduced-motion) {
     --animation-duration: 0ms;
   }
@@ -82,5 +86,7 @@
     --destructive-subtle: var(--rose-950);
 
     --border: var(--zinc-800);
+
+    --state-blend: exclusion;
   }
 }
