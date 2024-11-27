@@ -4,6 +4,7 @@ import {
   rest,
   schemaDiff,
   schemaSnapshot,
+  type SchemaDiffOutput,
   type SchemaSnapshotOutput,
 } from '@directus/sdk';
 import type { PublicSchema } from '~/directus/collections/schema';
@@ -40,35 +41,30 @@ const createPublicClient = (runtimeConfig: RuntimeConfig) => {
 
 const createAdminClient = async (runtimeConfig: RuntimeConfig) => {
   const client = createDirectus(runtimeConfig.public.url).with(authentication()).with(rest());
-  await client.login(runtimeConfig.admin.email, runtimeConfig.admin.password);
+  await Try(client.login(runtimeConfig.admin.email, runtimeConfig.admin.password));
 
   return client;
 };
 
 const retrieveSchemaSnapshot = async (client: Awaited<ReturnType<typeof createAdminClient>>) => {
   const { readFile, writeFile } = await import('fs/promises');
-  let schema: SchemaSnapshotOutput;
 
-  try {
-    schema = JSON.parse(await readFile('directus/schema.json', 'utf-8'));
-  } catch {
+  let [schema, schemaError] = await Try<SchemaSnapshotOutput>(
+    JSON.parse(await readFile('directus/schema.json', 'utf-8')),
+  );
+
+  if (schemaError) {
     schema = await client.request(schemaSnapshot());
     await writeFile('directus/schema.json', JSON.stringify(schema, null, 2));
     console.info('Directus', 'created schema snapshot');
   }
 
-  try {
-    const { diff } = await client.request(schemaDiff(schema));
+  let [diff] = await Try(client.request(schemaDiff(schema!)));
 
-    if (diff) {
-      schema = await client.request(schemaSnapshot());
-      await writeFile('directus/schema.json', JSON.stringify(schema, null, 2));
-      console.info('Directus', 'updated schema snapshot');
-    }
-  } catch (error: any) {
-    for (const { message } of error.errors) {
-      console.warn('Directus', 'rejected schema snapshot:', message);
-    }
+  if (diff?.diff) {
+    schema = await client.request(schemaSnapshot());
+    await writeFile('directus/schema.json', JSON.stringify(schema, null, 2));
+    console.info('Directus', 'updated schema snapshot');
   }
 
   return schema;
