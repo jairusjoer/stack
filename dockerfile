@@ -8,7 +8,7 @@ FROM node:${NODE_VERSION}-alpine
 RUN mkdir nuxt
 WORKDIR nuxt
 
-# Update and install dependency
+# Update and install dependencies
 RUN apk update && apk upgrade
 RUN apk add git
 
@@ -18,4 +18,4 @@ COPY . .
 RUN npm install
 RUN npm run build
 
-CMD [ "npm", "start" ]
+CMD [ "node", ".output/server/index.mjs" ]
