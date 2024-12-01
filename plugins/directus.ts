@@ -4,7 +4,6 @@ import {
   rest,
   schemaDiff,
   schemaSnapshot,
-  type SchemaDiffOutput,
   type SchemaSnapshotOutput,
 } from '@directus/sdk';
 import type { PublicSchema } from '~/directus/collections/schema';
@@ -41,7 +40,7 @@ const createPublicClient = (runtimeConfig: RuntimeConfig) => {
 
 const createAdminClient = async (runtimeConfig: RuntimeConfig) => {
   const client = createDirectus(runtimeConfig.public.url).with(authentication()).with(rest());
-  await Try(client.login(runtimeConfig.admin.email, runtimeConfig.admin.password));
+  await Try(() => client.login(runtimeConfig.admin.email, runtimeConfig.admin.password));
 
   return client;
 };
@@ -49,7 +48,7 @@ const createAdminClient = async (runtimeConfig: RuntimeConfig) => {
 const retrieveSchemaSnapshot = async (client: Awaited<ReturnType<typeof createAdminClient>>) => {
   const { readFile, writeFile } = await import('fs/promises');
 
-  let [schema, schemaError] = await Try<SchemaSnapshotOutput>(
+  let [schema, schemaError] = await Try<SchemaSnapshotOutput>(async () =>
     JSON.parse(await readFile('directus/schema.json', 'utf-8')),
   );
 
@@ -59,7 +58,7 @@ const retrieveSchemaSnapshot = async (client: Awaited<ReturnType<typeof createAd
     console.info('Directus', 'created schema snapshot');
   }
 
-  let [diff] = await Try(client.request(schemaDiff(schema!)));
+  let [diff] = await Try(() => client.request(schemaDiff(schema!)));
 
   if (diff?.diff) {
     schema = await client.request(schemaSnapshot());
