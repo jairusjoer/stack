@@ -1,15 +1,16 @@
+import tailwindcss from '@tailwindcss/vite';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   alias: {
     '~directus': '../directus',
   },
   compatibilityDate: '2024-04-03',
-  css: ['~/assets/css/globals.scss'],
+  css: ['~/assets/css/tailwind.css'],
   devtools: { enabled: true },
   experimental: {
     inlineRouteRules: true,
   },
-  modules: ['@nuxtjs/tailwindcss'],
   runtimeConfig: {
     admin: {
       email: process.env.ADMIN_EMAIL,
@@ -20,16 +21,7 @@ export default defineNuxtConfig({
       url: process.env.PUBLIC_URL,
     },
   },
-  tailwindcss: {
-    viewer: false,
-  },
   vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          api: 'modern',
-        },
-      },
-    },
+    plugins: [tailwindcss()],
   },
 });

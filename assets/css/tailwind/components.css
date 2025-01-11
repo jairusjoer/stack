@@ -1,0 +1,40 @@
+@layer components {
+  .form-input,
+  .form-textarea,
+  .form-select,
+  .form-multiselect,
+  .form-checkbox,
+  .form-radio {
+    @apply border-input bg-background-subtle placeholder:text-foreground-subtle border;
+  }
+
+  .form-input {
+    @apply text-foreground h-12 rounded px-3;
+  }
+
+  .form-textarea {
+    @apply text-foreground rounded p-3;
+  }
+
+  .form-select,
+  .form-multiselect {
+    @apply space-y-1 overflow-auto rounded;
+
+    &:not([size]) {
+      @apply h-12;
+    }
+
+    option {
+      @apply flex h-12 items-center gap-1 px-3;
+
+      &:checked {
+        @apply bg-brand text-background;
+      }
+    }
+  }
+
+  .form-checkbox,
+  .form-radio {
+    @apply accent-brand size-4;
+  }
+}

@@ -1,0 +1,17 @@
+@layer base {
+  :root {
+    --animation-duration: 150ms;
+
+    color-scheme: light dark;
+  }
+
+  @media (prefers-reduced-motion) {
+    :root {
+      --animation-duration: 0ms !important;
+    }
+  }
+
+  * {
+    @apply border-border;
+  }
+}

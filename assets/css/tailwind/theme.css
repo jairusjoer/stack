@@ -1,0 +1,31 @@
+@theme {
+  --color-background: light-dark(var(--color-zinc-100), var(--color-zinc-950));
+  --color-background-subtle: light-dark(var(--color-zinc-50), var(--color-zinc-900));
+
+  --color-foreground: light-dark(var(--color-zinc-950), var(--color-zinc-50));
+  --color-foreground-subtle: light-dark(var(--color-zinc-600), var(--color-zinc-400));
+
+  --color-neutral: light-dark(var(--color-zinc-950), var(--color-zinc-100));
+  --color-neutral-subtle: light-dark(var(--color-zinc-300), var(--color-zinc-700));
+
+  --color-brand: light-dark(var(--color-indigo-600), var(--color-indigo-400));
+  --color-brand-subtle: light-dark(var(--color-indigo-100), var(--color-indigo-950));
+
+  --color-informative: light-dark(var(--color-sky-600), var(--color-sky-400));
+  --color-informative-subtle: light-dark(var(--color-sky-100), var(--color-sky-950));
+
+  --color-successful: light-dark(var(--color-emerald-600), var(--color-emerald-400));
+  --color-successful-subtle: light-dark(var(--color-emerald-100), var(--color-emerald-950));
+
+  --color-cautionary: light-dark(var(--color-amber-600), var(--color-amber-400));
+  --color-cautionary-subtle: light-dark(var(--color-amber-100), var(--color-amber-950));
+
+  --color-destructive: light-dark(var(--color-rose-600), var(--color-rose-400));
+  --color-destructive-subtle: light-dark(var(--color-rose-100), var(--color-rose-950));
+
+  --color-border: light-dark(var(--color-zinc-200), var(--color-zinc-800));
+
+  --color-input: var(--color-border);
+
+  --color-ring: var(--color-brand-bold);
+}
