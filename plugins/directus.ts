@@ -53,9 +53,12 @@ const retrieveSchemaSnapshot = async (client: Awaited<ReturnType<typeof createAd
   );
 
   if (schemaError) {
-    schema = await client.request(schemaSnapshot());
-    await writeFile('directus/schema.json', JSON.stringify(schema, null, 2));
-    console.info('Directus', 'created schema snapshot');
+    [schema] = await Try(() => client.request(schemaSnapshot()));
+
+    if (schema) {
+      await writeFile('directus/schema.json', JSON.stringify(schema, null, 2));
+      console.info('Directus', 'created schema snapshot');
+    }
   }
 
   let [diff] = await Try(() => client.request(schemaDiff(schema!)));
