@@ -1,4 +1,4 @@
-export interface Example {
+export interface ExampleInterface {
   id: number;
   title: string;
   content: string;

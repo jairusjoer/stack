@@ -50,7 +50,5 @@
     <p class="rich-text">
       <small>Start by editing the <code>pages/index.vue</code> page.</small>
     </p>
-
-    <WelcomeStatus class="mt-4" />
   </main>
 </template>
