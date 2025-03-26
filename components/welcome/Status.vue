@@ -10,10 +10,10 @@ const { data: health } = await useAsyncData('health', async () => {
 const refresh = async () => {
   try {
     health.value = await $directus.publicClient.request(serverHealth());
-    console.log(...ConsoleBadge('status', '#00BCD4'), 'Refreshed directus status');
+    console.log('Refreshed directus status');
   } catch (error) {
     health.value = null;
-    console.error(...ConsoleBadge('status', '#c0392b'), 'Failed to refresh directus status');
+    console.error('Failed to refresh directus status');
   }
 };
 </script>
