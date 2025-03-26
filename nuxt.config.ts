@@ -12,12 +12,12 @@ export default defineNuxtConfig({
   experimental: {
     inlineRouteRules: true,
   },
+  modules: ['@nuxt/eslint'],
   runtimeConfig: {
     admin: {
       email: process.env.ADMIN_EMAIL,
       password: process.env.ADMIN_PASSWORD,
     },
-
     public: {
       url: process.env.PUBLIC_URL,
     },

@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "directus": "11.3.2",
+  "vendor": "sqlite",
+  "collections": [],
+  "fields": [],
+  "relations": []
+}

@@ -61,7 +61,7 @@ const retrieveSchemaSnapshot = async (client: Awaited<ReturnType<typeof createAd
     }
   }
 
-  let [diff] = await Try(() => client.request(schemaDiff(schema!)));
+  const [diff] = await Try(() => client.request(schemaDiff(schema!)));
 
   if (diff?.diff) {
     schema = await client.request(schemaSnapshot());

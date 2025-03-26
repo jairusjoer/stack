@@ -1,8 +1,6 @@
-<script setup lang="ts"></script>
-
 <template>
   <main class="flex min-h-screen flex-col items-center justify-center px-4 py-8 text-center">
-    <div class="flex select-none items-center gap-4">
+    <div class="flex items-center gap-4 select-none">
       <a
         href="https://nuxt.com/docs/getting-started/introduction"
         target="_blank"
@@ -22,7 +20,7 @@
         </svg>
       </a>
 
-      <span class="w-5 text-center text-h5 font-light">+</span>
+      <span class="text-h5 w-5 text-center font-light">+</span>
       <a
         href="https://docs.directus.io/"
         target="_blank"
@@ -45,8 +43,8 @@
 
     <hr class="my-8 w-52 border-dashed" />
 
-    <h1 class="text-h5 font-semibold leading-tight text-foreground">
-      Nuxt <span class="font-light text-foreground-subtle">+</span> Directus Boilerplate
+    <h1 class="text-h5 text-foreground leading-tight font-semibold">
+      Nuxt <span class="text-foreground-subtle font-light">+</span> Directus Boilerplate
     </h1>
 
     <p class="rich-text">
