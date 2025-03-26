@@ -13,19 +13,20 @@
   },
   "dependencies": {
     "@directus/sdk": "^17.0.2",
-    "nuxt": "^3.15.1",
-    "vue": "latest",
-    "vue-router": "latest"
+    "nuxt": "^3.16.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
-    "@tailwindcss/vite": "^4.0.0-beta.9",
-    "prettier": "^3.4.2",
-    "prettier-plugin-tailwindcss": "^0.6.9",
-    "sass": "^1.83.1",
+    "@tailwindcss/vite": "^4.0.17",
+    "@types/node": "^22.13.13",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "sass": "^1.86.0",
     "tailwindcss": "^4.0.0-beta.9",
-    "typescript": "^5.7.3",
-    "vue-tsc": "^2.1.10"
+    "typescript": "^5.8.2",
+    "vue-tsc": "^2.2.8"
   },
   "prettier": {
     "singleAttributePerLine": true,
