@@ -1,9 +1,9 @@
-import type { ExampleInterface } from './example';
+import type { Example } from './example';
 
-export interface PublicSchemaInterface {
-  examples: ExampleInterface[];
+export interface PublicSchema {
+  examples: Example[];
 }
 
-export interface AdminSchemaInterface extends PublicSchemaInterface {
-  examples: ExampleInterface[];
+export interface AuthenticatedSchema extends PublicSchema {
+  // ...
 }
