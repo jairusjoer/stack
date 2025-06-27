@@ -11,9 +11,18 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "astro": "^5.10.1"
+    "@repo/ui": "workspace:*",
+    "@astrojs/react": "^4.3.0",
+    "@astrojs/sitemap": "^3.4.1",
+    "@tailwindcss/vite": "^4.1.11",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "astro": "^5.10.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.4",
     "@repo/configs": "workspace:*",
     "eslint": "^9.29.0"
   }
