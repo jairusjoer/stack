@@ -1,41 +1,38 @@
-# Database
-*.sql*
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Directus
-directus/database/**
-directus/extensions/**
-directus/uploads/**
+# Dependencies
+node_modules
+.pnp
+.pnp.js
 
-# Editors
-.DS_Store
-.fleet
-.idea
-.vscode/*
-*.njsproj
-*.ntvs*
-*.sln
-*.suo
-*.sw?
-
-# Environment
+# Local env files
 .env
-.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Nuxt
-.cache
-.data
-.nitro
-.nuxt
-.output
+# Testing
+coverage
+
+# Turbo
+.turbo
+
+# Vercel
+.vercel
+
+# Build Outputs
+.next/
+out/
+build
 dist
 
-# Logs
-*.log
-logs
 
-# Packages
-node_modules
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Keep
-!.env.example
-!.gitkeep
+# Misc
+.DS_Store
+*.pem
