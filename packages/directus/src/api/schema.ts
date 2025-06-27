@@ -1,10 +1,10 @@
 import { schemaApply, schemaDiff, schemaSnapshot } from '@directus/sdk';
 import { Try } from '@repo/utils/try';
-import type { createUserClient } from './authentication';
+import type { createAuthenticatedClient } from './authentication';
 
 // https://docs.directus.io/reference/system/schema.html#schema
 
-export async function retrieveSchemaSnapshot(client: Awaited<ReturnType<typeof createUserClient>>) {
+export async function retrieveSchemaSnapshot(client: Awaited<ReturnType<typeof createAuthenticatedClient>>) {
   const { writeFile } = await import('fs/promises');
 
   const schema = await client.request(schemaSnapshot());
@@ -15,7 +15,7 @@ export async function retrieveSchemaSnapshot(client: Awaited<ReturnType<typeof c
   return schema;
 }
 
-export async function retrieveSchemaDifference(client: Awaited<ReturnType<typeof createUserClient>>) {
+export async function retrieveSchemaDifference(client: Awaited<ReturnType<typeof createAuthenticatedClient>>) {
   const schema = await retrieveSchemaSnapshot(client);
   const diff = await client.request(schemaDiff(schema!));
 
@@ -24,7 +24,7 @@ export async function retrieveSchemaDifference(client: Awaited<ReturnType<typeof
   return diff;
 }
 
-export async function applySchemaDifference(client: Awaited<ReturnType<typeof createUserClient>>) {
+export async function applySchemaDifference(client: Awaited<ReturnType<typeof createAuthenticatedClient>>) {
   const diff = await retrieveSchemaDifference(client);
 
   if (diff?.diff) {

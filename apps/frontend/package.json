@@ -11,9 +11,12 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
+    "@astrojs/cloudflare": "^12.6.0",
     "@astrojs/react": "^4.3.0",
     "@astrojs/sitemap": "^3.4.1",
+    "@directus/sdk": "^20.0.0",
+    "@repo/directus": "workspace:*",
+    "@repo/ui": "workspace:*",
     "@tailwindcss/vite": "^4.1.11",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",

@@ -8,7 +8,7 @@ export function createPublicClient(options: { url: string }) {
   return createDirectus<PublicSchema>(options.url).with(rest());
 }
 
-export async function createUserClient(options: { url: string; payload: LocalLoginPayload }) {
+export async function createAuthenticatedClient(options: { url: string; payload: LocalLoginPayload }) {
   const client = createDirectus<AuthenticatedSchema>(options.url).with(authentication()).with(rest());
 
   await Try(() => client.login(options.payload));

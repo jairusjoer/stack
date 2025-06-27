@@ -1,5 +1,13 @@
 ---
 import '@repo/ui/styles/tailwind.css';
+import { createPublicClient } from '@repo/directus/api/authentication.ts';
+import { Example as ReactExample } from '@repo/ui/components/Example.tsx';
+import { PUBLIC_URL } from 'astro:env/client';
+import { serverHealth } from '@directus/sdk';
+import Example from '../islands/Example.astro';
+
+const client = createPublicClient({ url: PUBLIC_URL });
+const health = await client.request(serverHealth());
 ---
 
 <html lang="en">
@@ -21,6 +29,12 @@ import '@repo/ui/styles/tailwind.css';
     <title>Astro</title>
   </head>
   <body>
-    <h1 class="bg-red-500">Astro</h1>
+    <h1 class="">Astro</h1>
+    <Example server:defer />
+    <ReactExample
+      data={JSON.stringify(health)}
+      labels={{ title: 'React Component' }}
+      client:only
+    />
   </body>
 </html>
