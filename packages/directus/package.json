@@ -4,8 +4,7 @@
   "type": "module",
   "private": true,
   "exports": {
-    "./eslint.config": "./src/eslint.config.js",
-    "./tsconfig": "./src/tsconfig.json"
+    "./*": "./src/*/*.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -17,6 +16,7 @@
   },
   "devDependencies": {
     "@repo/configs": "workspace:*",
-    "@types/node": "^22.15.3"
+    "@types/node": "^22.15.3",
+    "eslint": "^9.29.0"
   }
 }

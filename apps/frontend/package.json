@@ -6,9 +6,15 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "astro": "^5.10.1"
+  },
+  "devDependencies": {
+    "@repo/configs": "workspace:*",
+    "eslint": "^9.29.0"
   }
 }

@@ -5,5 +5,13 @@
   "private": true,
   "exports": {
     "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/configs": "workspace:*",
+    "eslint": "^9.29.0"
   }
 }
