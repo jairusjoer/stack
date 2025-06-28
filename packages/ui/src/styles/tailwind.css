@@ -1,8 +1,6 @@
 @import './ui.css';
 
-@import './tailwind/theme.css';
 @import './tailwind/base.css';
-@import './tailwind/components.css';
 @import './tailwind/utilities.css';
 
 @plugin '@tailwindcss/typography';

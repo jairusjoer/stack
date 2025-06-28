@@ -1,7 +1,7 @@
-export const Try = async <T1, T2 = unknown>(expression: () => Promise<T1>): Promise<[T1?, T2?]> => {
+export const Try = async <T1, T2 = unknown>(expression: () => Promise<T1>): Promise<{ data?: T1; error?: T2 }> => {
   try {
-    return [await expression(), void 0];
+    return { data: await expression(), error: void 0 };
   } catch (error) {
-    return [void 0, error as T2];
+    return { data: void 0, error: error as T2 };
   }
 };

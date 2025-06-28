@@ -5,5 +5,5 @@ export interface PublicSchema {
 }
 
 export interface AuthenticatedSchema extends PublicSchema {
-  // ...
+  examples: Example[]; // Replace with your authenticated schema properties
 }

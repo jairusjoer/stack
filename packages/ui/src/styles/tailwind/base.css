@@ -1,6 +1,5 @@
 @layer base {
   html {
     scrollbar-gutter: stable;
-    text-wrap: pretty;
   }
 }

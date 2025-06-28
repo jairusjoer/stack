@@ -28,7 +28,7 @@ export async function applySchemaDifference(client: Awaited<ReturnType<typeof cr
   const diff = await retrieveSchemaDifference(client);
 
   if (diff?.diff) {
-    const [_apply, applyError] = await Try(() => client.request(schemaApply(diff!)));
+    const { error: applyError } = await Try(() => client.request(schemaApply(diff!)));
 
     if (applyError) {
       return console.error('Directus', 'failed to apply schema difference', applyError);

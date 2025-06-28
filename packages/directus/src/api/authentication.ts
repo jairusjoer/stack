@@ -1,4 +1,4 @@
-import { authentication, createDirectus, rest, type LocalLoginPayload } from '@directus/sdk';;
+import { authentication, createDirectus, rest, type LocalLoginPayload } from '@directus/sdk';
 import type { AuthenticatedSchema, PublicSchema } from '../schemas';
 import { Try } from '@repo/utils/try.ts';
 
