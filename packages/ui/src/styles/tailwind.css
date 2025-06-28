@@ -4,3 +4,5 @@
 @import './tailwind/utilities.css';
 
 @plugin '@tailwindcss/typography';
+
+@source '../components';

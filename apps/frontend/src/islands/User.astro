@@ -1,27 +1,24 @@
 ---
 import { readMe } from '@directus/sdk';
-import { createAuthenticatedClient } from '@repo/directus/api/authentication.ts';
+import { User as ReactUser } from '@/components/react/user.tsx';
+import { createAuthenticatedClient, createPublicClient } from '@repo/directus/api/authentication.ts';
 import { PUBLIC_URL } from 'astro:env/client';
+import { SECRET_EMAIL, SECRET_PASSWORD } from 'astro:env/server';
+import { Try } from '@repo/utils/try.ts';
 
-interface Props {
-  client: Awaited<ReturnType<typeof createAuthenticatedClient>>;
-}
+const client = await createAuthenticatedClient({
+  url: PUBLIC_URL,
+  payload: { email: SECRET_EMAIL, password: SECRET_PASSWORD },
+});
 
-const { client } = Astro.props;
-
-const user = await client.request(readMe());
+const { data: me } = await Try(() => client.request(readMe()));
 ---
 
-<div class="flex items-center gap-2 rounded-xl border p-2">
-  <img
-    class="rounded-md"
-    src={`${PUBLIC_URL}/assets/${user?.avatar}`}
-    alt=""
-    width={32}
-    height={32}
-  />
-  <div class="leading-4">
-    <div class="text-sm font-semibold">{user?.first_name}&nbsp;{user?.last_name}</div>
-    <div class="text-xs">{user?.email}</div>
-  </div>
-</div>
+{
+  me && (
+    <ReactUser
+      data={me}
+      client:load
+    />
+  )
+}

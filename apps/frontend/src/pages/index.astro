@@ -1,14 +1,7 @@
 ---
 import '@repo/ui/styles/tailwind.css';
-import { createAuthenticatedClient } from '@repo/directus/api/authentication.ts';
-import { PUBLIC_URL } from 'astro:env/client';
-import { SECRET_EMAIL, SECRET_PASSWORD } from 'astro:env/server';
-import User from '../islands/User.astro';
-
-const client = await createAuthenticatedClient({
-  url: PUBLIC_URL,
-  payload: { email: SECRET_EMAIL, password: SECRET_PASSWORD },
-});
+import User from '@/islands/user.astro';
+import { Skeleton } from '@repo/ui/components/ui/skeleton.tsx';
 ---
 
 <html lang="en">
@@ -30,6 +23,11 @@ const client = await createAuthenticatedClient({
     <title>Astro</title>
   </head>
   <body>
-    <User {client} />
+    <User server:defer>
+      <Skeleton
+        className="h-8"
+        slot="fallback"
+      />
+    </User>
   </body>
 </html>
