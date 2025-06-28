@@ -1,0 +1,27 @@
+---
+import { readMe } from '@directus/sdk';
+import { createAuthenticatedClient } from '@repo/directus/api/authentication.ts';
+import { PUBLIC_URL } from 'astro:env/client';
+
+interface Props {
+  client: Awaited<ReturnType<typeof createAuthenticatedClient>>;
+}
+
+const { client } = Astro.props;
+
+const user = await client.request(readMe());
+---
+
+<div class="flex items-center gap-2 rounded-xl border p-2">
+  <img
+    class="rounded-md"
+    src={`${PUBLIC_URL}/assets/${user?.avatar}`}
+    alt=""
+    width={32}
+    height={32}
+  />
+  <div class="leading-4">
+    <div class="text-sm font-semibold">{user?.first_name}&nbsp;{user?.last_name}</div>
+    <div class="text-xs">{user?.email}</div>
+  </div>
+</div>

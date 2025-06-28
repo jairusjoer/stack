@@ -1,13 +1,14 @@
 ---
 import '@repo/ui/styles/tailwind.css';
-import { createPublicClient } from '@repo/directus/api/authentication.ts';
-import { Example as ReactExample } from '@repo/ui/components/Example.tsx';
+import { createAuthenticatedClient } from '@repo/directus/api/authentication.ts';
 import { PUBLIC_URL } from 'astro:env/client';
-import { serverHealth } from '@directus/sdk';
-import Example from '../islands/Example.astro';
+import { SECRET_EMAIL, SECRET_PASSWORD } from 'astro:env/server';
+import User from '../islands/User.astro';
 
-const client = createPublicClient({ url: PUBLIC_URL });
-const health = await client.request(serverHealth());
+const client = await createAuthenticatedClient({
+  url: PUBLIC_URL,
+  payload: { email: SECRET_EMAIL, password: SECRET_PASSWORD },
+});
 ---
 
 <html lang="en">
@@ -29,12 +30,6 @@ const health = await client.request(serverHealth());
     <title>Astro</title>
   </head>
   <body>
-    <h1 class="">Astro</h1>
-    <Example server:defer />
-    <ReactExample
-      data={JSON.stringify(health)}
-      labels={{ title: 'React Component' }}
-      client:only
-    />
+    <User {client} />
   </body>
 </html>
