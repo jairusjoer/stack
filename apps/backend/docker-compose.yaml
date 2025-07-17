@@ -1,10 +1,10 @@
 name: directus-cms-template
 services:
   database:
-    image: postgis/postgis:13-master
-    platform: linux/amd64
+    image: ghcr.io/baosystems/postgis:13-3.5
+    restart: unless-stopped
     volumes:
-      - ./data/database:/var/lib/postgresql/data
+      - ./data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -19,6 +19,7 @@ services:
 
   cache:
     image: redis:6
+    restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "[ $$(redis-cli ping) = 'PONG' ]"]
       interval: 10s
@@ -29,6 +30,7 @@ services:
 
   directus:
     image: directus/directus:11.6.1
+    restart: unless-stopped
     ports:
       - ${DIRECTUS_PORT}:8055
     volumes:
