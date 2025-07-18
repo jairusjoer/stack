@@ -1,5 +1,6 @@
 {
   "name": "stack",
+  "type": "module",
   "private": true,
   "scripts": {
     "build": "turbo run build",

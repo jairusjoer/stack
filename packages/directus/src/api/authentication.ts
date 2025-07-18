@@ -1,17 +1,15 @@
-import { authentication, createDirectus, rest, type LocalLoginPayload } from '@directus/sdk';
-import type { AuthenticatedSchema, PublicSchema } from '../schemas';
-import { Try } from '@repo/utils/try.ts';
+import { authentication, createDirectus, rest, type ClientOptions } from '@directus/sdk';
+import type { Schema } from '../schemas';
+import { Only } from '@repo/utils/only.ts';
 
 // https://docs.directus.io/reference/authentication.html
 
-export function createPublicClient(options: { url: string }) {
-  return createDirectus<PublicSchema>(options.url).with(rest());
-}
+export async function createClient(url: string, options?: ClientOptions) {
+  const client = createDirectus<Schema>(url, options)
+    .with(authentication('cookie', { credentials: 'include', autoRefresh: true }))
+    .with(rest());
 
-export async function createAuthenticatedClient(options: { url: string; payload: LocalLoginPayload }) {
-  const client = createDirectus<AuthenticatedSchema>(options.url).with(authentication()).with(rest());
-
-  await Try(() => client.login(options.payload));
+  await Only('client', async () => await client.refresh());
 
   return client;
 }

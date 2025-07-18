@@ -1,7 +1,6 @@
 ---
+import { User } from '@/islands/client/user';
 import '@repo/ui/styles/tailwind.css';
-import User from '@/islands/user.astro';
-import { Skeleton } from '@repo/ui/components/ui/skeleton.tsx';
 ---
 
 <html lang="en">
@@ -23,11 +22,6 @@ import { Skeleton } from '@repo/ui/components/ui/skeleton.tsx';
     <title>Astro</title>
   </head>
   <body>
-    <User server:defer>
-      <Skeleton
-        className="h-8"
-        slot="fallback"
-      />
-    </User>
+    <User client:load />
   </body>
 </html>

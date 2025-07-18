@@ -1,4 +1,4 @@
-name: directus-cms-template
+name: directus
 services:
   database:
     image: ghcr.io/baosystems/postgis:13-3.5

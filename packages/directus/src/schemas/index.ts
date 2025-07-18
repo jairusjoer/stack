@@ -1,9 +1,5 @@
 import type { Example } from './example';
 
-export interface PublicSchema {
+export interface Schema {
   examples: Example[];
-}
-
-export interface AuthenticatedSchema extends PublicSchema {
-  examples: Example[]; // Replace with your authenticated schema properties
 }
