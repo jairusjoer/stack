@@ -22,7 +22,7 @@
     "@tailwindcss/vite": "^4.1.11",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "astro": "^5.10.1",
+    "astro": "^5.12.1",
     "lucide-react": "^0.525.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
@@ -30,6 +30,6 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "@repo/configs": "workspace:*",
-    "eslint": "^9.29.0"
+    "eslint": "^9.31.0"
   }
 }
