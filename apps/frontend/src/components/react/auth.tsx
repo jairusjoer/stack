@@ -19,6 +19,7 @@ export const Login = () => {
         name="email"
         id="email"
         defaultValue="admin@example.com"
+        autoComplete='username'
         required
         autoFocus
       />
@@ -27,6 +28,7 @@ export const Login = () => {
         name="password"
         id="password"
         defaultValue="d1r3ctu5"
+        autoComplete='current-password'
         required
       />
       <button type="submit">Login</button>

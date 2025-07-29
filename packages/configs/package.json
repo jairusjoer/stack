@@ -1,5 +1,5 @@
 {
-  "name": "@repo/configs",
+  "name": "@stack/configs",
   "version": "0.0.0",
   "type": "module",
   "private": true,

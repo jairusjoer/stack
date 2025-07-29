@@ -11,14 +11,13 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.0",
     "@astrojs/react": "^4.3.0",
     "@astrojs/sitemap": "^3.4.1",
     "@directus/sdk": "^20.0.0",
     "@preact/signals-react": "^3.2.1",
-    "@repo/directus": "workspace:*",
-    "@repo/ui": "workspace:*",
-    "@repo/utils": "workspace:*",
+    "@stack/directus": "workspace:*",
+    "@stack/ui": "workspace:*",
+    "@stack/shared": "workspace:*",
     "@tailwindcss/vite": "^4.1.11",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
@@ -29,7 +28,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "@repo/configs": "workspace:*",
+    "@stack/configs": "workspace:*",
     "eslint": "^9.31.0"
   }
 }

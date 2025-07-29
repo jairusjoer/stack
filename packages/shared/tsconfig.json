@@ -1,7 +1,4 @@
 {
   "extends": "@stack/configs/tsconfig",
-  "compilerOptions": {
-    "types": ["node"]
-  },
   "include": ["src"]
 }

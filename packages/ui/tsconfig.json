@@ -5,6 +5,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "extends": "@repo/configs/tsconfig",
+  "extends": "@stack/configs/tsconfig",
   "include": ["src"]
 }

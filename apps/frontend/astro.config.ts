@@ -1,7 +1,6 @@
 import { defineConfig, envField } from 'astro/config';
 
 // Integrations
-import cloudflare from '@astrojs/cloudflare';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
@@ -10,8 +9,6 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: cloudflare(),
-
   integrations: [react(), sitemap()],
 
   env: {

@@ -1,10 +1,11 @@
 {
-  "name": "@repo/directus",
+  "name": "@stack/directus",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./*.ts": "./src/*.ts"
+    "./api": "./src/api/index.ts",
+    "./schemas": "./src/schemas/index.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -12,10 +13,10 @@
   },
   "dependencies": {
     "@directus/sdk": "^20.0.0",
-    "@repo/utils": "workspace:*"
+    "@stack/shared": "workspace:*"
   },
   "devDependencies": {
-    "@repo/configs": "workspace:*",
+    "@stack/configs": "workspace:*",
     "@types/node": "^22.16.5",
     "eslint": "^9.31.0"
   }

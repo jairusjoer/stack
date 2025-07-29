@@ -1,6 +1,6 @@
 import { authentication, createDirectus, rest, type ClientOptions } from '@directus/sdk';
 import type { Schema } from '../schemas';
-import { Only } from '@repo/utils/only.ts';
+import { Only, Try } from '@stack/shared/utils';
 
 // https://docs.directus.io/reference/authentication.html
 
@@ -9,7 +9,7 @@ export async function createClient(url: string, options?: ClientOptions) {
     .with(authentication('cookie', { credentials: 'include', autoRefresh: true }))
     .with(rest());
 
-  await Only('client', async () => await client.refresh());
+  await Try(async () => await Only('client', async () => await client.refresh()));
 
   return client;
 }

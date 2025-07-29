@@ -1,4 +1,4 @@
-import { createClient } from '@repo/directus/api/authentication.ts';
+import { createClient } from '@stack/directus/api';
 import { PUBLIC_URL } from 'astro:env/client';
 import { signal } from '@preact/signals-react';
 

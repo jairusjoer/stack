@@ -4,8 +4,8 @@ import { readMe, type DirectusUser } from '@directus/sdk';
 import { client } from '@/stores/directus';
 import { useSignalEffect, useSignals } from '@preact/signals-react/runtime';
 import { signal } from '@preact/signals-react';
-import { Try } from '@repo/utils/try.ts';
-import { Skeleton } from '@repo/ui/components/ui/skeleton.tsx';
+import { Try } from '@stack/shared/utils';
+import { Skeleton } from '@stack/ui/components/ui';
 
 export interface State {
   user: DirectusUser | null;
@@ -15,7 +15,6 @@ export interface State {
 const state = signal<State>({ user: null, loading: true });
 
 const fetchMe = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate loading delay
   const { data } = await Try(() => client.value.request(readMe()));
 
   state.value = { user: data as DirectusUser, loading: false };

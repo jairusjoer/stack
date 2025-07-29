@@ -1,5 +1,5 @@
 import { schemaApply, schemaDiff, schemaSnapshot } from '@directus/sdk';
-import { Try } from '@repo/utils/try.ts';
+import { Try } from '@stack/shared/utils';
 import type { createClient } from './authentication';
 
 // https://docs.directus.io/reference/system/schema.html#schema

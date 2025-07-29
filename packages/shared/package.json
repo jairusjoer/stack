@@ -1,17 +1,17 @@
 {
-  "name": "@repo/utils",
+  "name": "@stack/shared",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./*.ts": "./src/*.ts"
+    "./utils": "./src/utils/index.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
-    "@repo/configs": "workspace:*",
+    "@stack/configs": "workspace:*",
     "eslint": "^9.31.0"
   },
   "dependencies": {
