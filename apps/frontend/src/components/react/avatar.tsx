@@ -5,5 +5,5 @@ export interface Props {
 }
 
 export const Avatar = ({ user }: Props) => {
-  return <div>Hello {user.email}</div>;
+  return <div>{user.email}</div>;
 };

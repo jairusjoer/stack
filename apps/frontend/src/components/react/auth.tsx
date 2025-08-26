@@ -1,4 +1,4 @@
-import { client } from '@/stores/directus';
+import { client } from '../../stores/directus';
 
 export const Login = () => {
   const login = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -13,25 +13,47 @@ export const Login = () => {
   };
 
   return (
-    <form onSubmit={login}>
-      <input
-        type="email"
-        name="email"
-        id="email"
-        defaultValue="admin@example.com"
-        autoComplete='username'
-        required
-        autoFocus
-      />
-      <input
-        type="password"
-        name="password"
-        id="password"
-        defaultValue="d1r3ctu5"
-        autoComplete='current-password'
-        required
-      />
-      <button type="submit">Login</button>
+    <form
+      className="flex text-sm font-medium"
+      onSubmit={login}
+    >
+      <div className="grid rounded-l-md border">
+        <input
+          className="h-8 px-1"
+          type="email"
+          name="email"
+          id="email"
+          // defaultValue="admin@example.com"
+          autoComplete="username"
+          required
+          autoFocus
+        />
+        <hr />
+        <input
+          className="h-8 px-1"
+          type="password"
+          name="password"
+          id="password"
+          // defaultValue="d1r3ctu5"
+          autoComplete="current-password"
+          required
+        />
+      </div>
+      <div className="grid rounded-r-md bg-blue-600 text-white">
+        <button
+          className="h-8 px-4"
+          type="submit"
+        >
+          Sign Up
+        </button>
+        <hr />
+        <button
+          className="h-8 px-4"
+          type="submit"
+        >
+          Sign In
+        </button>
+      </div>
     </form>
   );
 };
