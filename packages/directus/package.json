@@ -12,12 +12,12 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@directus/sdk": "^20.0.0",
+    "@directus/sdk": "catalog:",
     "@stack/shared": "workspace:*"
   },
   "devDependencies": {
     "@stack/configs": "workspace:*",
-    "@types/node": "^22.16.5",
-    "eslint": "^9.31.0"
+    "@types/node": "catalog:",
+    "eslint": "catalog:"
   }
 }
