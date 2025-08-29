@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // Plugins
 import tailwindcss from '@tailwindcss/vite';
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,6 +21,12 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      tanstackRouter({
+        target: 'react',
+        autoCodeSplitting: true,
+      }),
+    ],
   },
 });

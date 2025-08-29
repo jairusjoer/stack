@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "@stack/frontend",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -16,9 +16,12 @@
     "@directus/sdk": "catalog:",
     "@preact/signals-react": "^3.2.1",
     "@stack/directus": "workspace:*",
-    "@stack/ui": "workspace:*",
     "@stack/shared": "workspace:*",
+    "@stack/ui": "workspace:*",
     "@tailwindcss/vite": "^4.1.11",
+    "@tanstack/react-router": "^1.131.28",
+    "@tanstack/react-router-devtools": "^1.131.28",
+    "@tanstack/router-plugin": "^1.131.28",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "astro": "catalog:",
