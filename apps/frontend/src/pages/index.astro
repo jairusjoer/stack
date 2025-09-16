@@ -1,7 +1,10 @@
 ---
+import { User } from '../islands/client/user';
 import Default from '../layouts/default.astro';
 ---
 
 <Default>
-  <div>Body goes here</div>
+  <main class="bg-muted grid min-h-screen place-items-center">
+    <User client:load />
+  </main>
 </Default>
