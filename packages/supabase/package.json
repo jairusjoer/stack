@@ -1,5 +1,5 @@
 {
-  "name": "@stack/directus",
+  "name": "@stack/supabase",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -12,8 +12,8 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@directus/sdk": "catalog:",
-    "@stack/shared": "workspace:*"
+    "@stack/shared": "workspace:*",
+    "@supabase/supabase-js": "catalog:"
   },
   "devDependencies": {
     "@stack/configs": "workspace:*",

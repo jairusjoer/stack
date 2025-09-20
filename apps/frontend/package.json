@@ -11,13 +11,14 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/react": "^4.3.0",
-    "@astrojs/sitemap": "^3.4.1",
-    "@directus/sdk": "catalog:",
+    "@astrojs/node": "^9.4.3",
+    "@astrojs/react": "^4.3.1",
+    "@astrojs/sitemap": "^3.6.0",
     "@preact/signals-react": "^3.2.1",
-    "@stack/directus": "workspace:*",
     "@stack/shared": "workspace:*",
+    "@stack/supabase": "workspace:*",
     "@stack/ui": "workspace:*",
+    "@supabase/supabase-js": "catalog:",
     "@tailwindcss/vite": "^4.1.11",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",

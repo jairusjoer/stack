@@ -2,10 +2,12 @@ import { defineConfig, envField } from 'astro/config';
 
 // Integrations
 import react from '@astrojs/react';
+import node from '@astrojs/node';
 import sitemap from '@astrojs/sitemap';
 
 // Plugins
 import tailwindcss from '@tailwindcss/vite';
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,4 +22,8 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+
+  adapter: node({
+    mode: 'standalone',
+  }),
 });

@@ -3,7 +3,7 @@ packages:
   - 'packages/*'
 
 catalog:
-  '@directus/sdk': '^20.0.0'
+  '@supabase/supabase-js': '^2.57.4'
   '@types/node': '^22.16.5'
   '@types/react-dom': '^19.1.0'
   '@types/react': '^19.1.0'

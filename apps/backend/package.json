@@ -5,5 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "docker-compose up"
-  }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
