@@ -1,6 +1,6 @@
-# Stack 2026
+# Stack 2027
 
-Monorepo containing the application stack: an Astro frontend, a Directus (Docker) backend, and shared internal packages (UI kit, utilities, schemas, and configuration). Built with Turborepo + pnpm workspaces.
+Monorepo containing an Astro frontend application and internal packages (UI kit, utilities, configuration, and Supabase helpers). Built with Turborepo + pnpm workspaces. The previous Directus/Postgres backend layer was removed on this branch in favor of a lighter Supabase approach.
 
 > _Node >= 22 and pnpm >= 10 are required_
 
@@ -9,12 +9,11 @@ Monorepo containing the application stack: an Astro frontend, a Directus (Docker
 ```
 .
 ├── apps
-│   ├── backend         # Directus + Postgres + Redis via docker-compose
-│   └── frontend        # Astro site (React integrations, Tailwind via @tailwindcss/vite)
+│   └── frontend        # Astro site (React, Tailwind via @tailwindcss/vite, Supabase client)
 ├── packages
 │   ├── configs         # Centralized ESLint (flat config) & future shared config exports
-│   ├── directus        # SDK layer: API helpers & schema exports around @directus/sdk
 │   ├── shared          # Cross-runtime utilities (Only, Try, cn, etc.)
+│   ├── supabase        # Supabase SDK wrappers (api & schemas placeholder)
 │   └── ui              # Reusable UI primitives (Radix, Tailwind, CVA)
 ├── turbo.json          # Turborepo task pipeline configuration
 ├── pnpm-workspace.yaml # Workspace + dependency catalog (ensures single versions)
@@ -23,19 +22,22 @@ Monorepo containing the application stack: an Astro frontend, a Directus (Docker
 
 ## Packages Overview
 
-| Package           | Description                                      | Notable Exports                         |
-| ----------------- | ------------------------------------------------ | --------------------------------------- |
-| `@stack/shared`   | Lightweight utilities shared across apps         | `utils/only`, `utils/try`, `utils/ui`   |
-| `@stack/ui`       | Design system / component primitives             | `components/ui/*`, Tailwind base styles |
-| `@stack/directus` | Directus schema + API client composition         | `api/*`, `schemas/*`                    |
-| `@stack/configs`  | ESLint flat config & future shared config points | `eslint.config.js`                      |
+| Package            | Description                                      | Notable Exports                         |
+| ------------------ | ------------------------------------------------ | --------------------------------------- |
+| `@stack/shared`    | Lightweight utilities shared across apps         | `utils/only`, `utils/try`, `utils/ui`   |
+| `@stack/ui`        | Design system / component primitives             | `components/ui/*`, Tailwind base styles |
+| `@stack/supabase`  | Supabase client wrappers & (future) schema types | `api/*`, `schemas/*`                    |
+| `@stack/configs`   | ESLint flat config & future shared config points | `eslint.config.js`                      |
 
 ## Utility Snippets
 
 ```ts
-// Try helper (returns Data<T> | Error)
+// Try helper (returns { data: T | undefined; error: E | undefined })
 import { Try } from '@stack/shared/utils';
 const { data, error } = await Try(() => fetchSomething());
+if (error) {
+	// handle error
+}
 
 // Only helper (conditionally run code client/server)
 import { Only } from '@stack/shared/utils';
@@ -52,7 +54,7 @@ const classes = cn('p-2', conditional && 'opacity-50');
 - pnpm (workspaces + catalog pinned versions)
 - Astro + React + Tailwind CSS
 - Radix UI + class-variance-authority for composable components
-- Directus (headless CMS / data layer) with Postgres + Redis
+- Supabase (auth + database + storage) via `@supabase/supabase-js`
 - TypeScript 5.8
 - ESLint (flat config) + Prettier (Astro + Tailwind plugins)
 
@@ -69,61 +71,41 @@ const classes = cn('p-2', conditional && 'opacity-50');
 You can target a single workspace with Turborepo filters, e.g.:
 
 ```sh
-pnpm build --filter frontend
-pnpm lint --filter directus
-pnpm dev --filter backend
+pnpm build --filter @stack/frontend
+pnpm lint --filter @stack/ui
+pnpm dev --filter @stack/frontend
 ```
 
-## Running the Frontend (Astro)
+## Running the Frontend (Astro + Supabase)
 
 ```sh
-pnpm dev --filter frontend
+pnpm dev --filter @stack/frontend
 ```
 
-Environment variables consumed by Astro are declared via `envField` in `astro.config.ts` (e.g. `PUBLIC_URL`). Add a `.env` or `.env.local` in `apps/frontend` as needed.
+Environment variables consumed by Astro are declared via `envField` in `astro.config.ts`:
 
-## Running the Backend (Directus Stack)
+```ts
+env: {
+	schema: {
+		SUPABASE_URL: envField.string({ context: 'client', access: 'public' }),
+		SUPABASE_KEY: envField.string({ context: 'client', access: 'public' }),
+	}
+}
+```
 
-The backend uses `docker-compose` inside `apps/backend` to orchestrate:
-
-- Postgres (postgis image)
-- Redis
-- Directus (official image)
-
-Create an `.env` file in `apps/backend` (values are examples):
+Add a `.env` (or `.env.local`) in `apps/frontend`:
 
 ```env
-DIRECTUS_PORT=8055
-DIRECTUS_SECRET=replace_me
-
-DB_USER=directus
-DB_PASSWORD=directus
-DB_DATABASE=directus
-
-ADMIN_EMAIL=admin@example.com
-ADMIN_PASSWORD=change_me
-
-PUBLIC_URL=http://localhost:8055
-WEBSOCKETS_ENABLED=true
-CACHE_ENABLED=true
-CACHE_AUTO_PURGE=true
-
-# CORS
-CORS_ENABLED=true
-CORS_ORIGIN=http://localhost:3000,http://localhost:4321
+SUPABASE_URL=your-project-url
+SUPABASE_KEY=anon-or-service-role-key
 ```
 
-Then start services:
+Supabase client example (already provided in `src/data/supabase.ts`):
 
-```sh
-pnpm dev --filter backend
+```ts
+import { supabase } from '@/data/supabase';
+const { data, error } = await supabase.from('table').select('*');
 ```
-
-The Directus UI will be available at `http://localhost:8055` (assuming default port mapping).
-
-### Hot Reloading Extensions / Uploads
-
-`./uploads` and `./extensions` are volume-mounted; changes persist across container restarts.
 
 ## Adding a New Package
 
@@ -133,7 +115,7 @@ The Directus UI will be available at `http://localhost:8055` (assuming default p
 4. Export public entrypoints through the `exports` field.
 5. (Optional) Add build / type tasks if the package produces artifacts.
 
-Update imports elsewhere using the new package name (e.g. `@stack/your-package`).
+Update imports elsewhere using the new package name (e.g. `@stack/your-package`). Prefer filtering builds while iterating: `pnpm dev --filter @stack/your-package`.
 
 ## Coding Standards
 
