@@ -1,29 +1,29 @@
 import { defineConfig, envField } from 'astro/config';
 
 // Integrations
-import react from '@astrojs/react';
 import node from '@astrojs/node';
+import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 // Plugins
 import tailwindcss from '@tailwindcss/vite';
 
-
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), sitemap()],
+  adapter: node({
+    mode: 'standalone',
+  }),
 
   env: {
     schema: {
-      PUBLIC_URL: envField.string({ context: 'client', access: 'public' }),
+      SUPABASE_URL: envField.string({ context: 'client', access: 'public' }),
+      SUPABASE_KEY: envField.string({ context: 'client', access: 'public' }),
     },
   },
+
+  integrations: [react(), sitemap()],
 
   vite: {
     plugins: [tailwindcss()],
   },
-
-  adapter: node({
-    mode: 'standalone',
-  }),
 });
