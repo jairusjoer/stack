@@ -5,8 +5,8 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint -- --fix",
-    "format": "prettier --write \"**/*.{astro,css,md,ts,tsx}\"",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{css,json,md,ts,vue}\"",
     "check-types": "turbo run check-types"
   },
   "devDependencies": {

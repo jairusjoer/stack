@@ -22,12 +22,12 @@ Monorepo containing an Astro frontend application and internal packages (UI kit,
 
 ## Packages Overview
 
-| Package            | Description                                      | Notable Exports                         |
-| ------------------ | ------------------------------------------------ | --------------------------------------- |
-| `@stack/shared`    | Lightweight utilities shared across apps         | `utils/only`, `utils/try`, `utils/ui`   |
-| `@stack/ui`        | Design system / component primitives             | `components/ui/*`, Tailwind base styles |
-| `@stack/supabase`  | Supabase client wrappers & (future) schema types | `api/*`, `schemas/*`                    |
-| `@stack/configs`   | ESLint flat config & future shared config points | `eslint.config.js`                      |
+| Package           | Description                                      | Notable Exports                         |
+| ----------------- | ------------------------------------------------ | --------------------------------------- |
+| `@stack/shared`   | Lightweight utilities shared across apps         | `utils/only`, `utils/try`, `utils/ui`   |
+| `@stack/ui`       | Design system / component primitives             | `components/ui/*`, Tailwind base styles |
+| `@stack/supabase` | Supabase client wrappers & (future) schema types | `api/*`, `schemas/*`                    |
+| `@stack/configs`  | ESLint flat config & future shared config points | `eslint.config.js`                      |
 
 ## Utility Snippets
 
@@ -36,7 +36,7 @@ Monorepo containing an Astro frontend application and internal packages (UI kit,
 import { Try } from '@stack/shared/utils';
 const { data, error } = await Try(() => fetchSomething());
 if (error) {
-	// handle error
+  // handle error
 }
 
 // Only helper (conditionally run code client/server)
