@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { invoke } from '@tauri-apps/api/core';
+import ApiDocumentation from './components/ApiDocumentation.vue';
 
 const greetMsg = ref('');
 const name = ref('');
@@ -13,6 +14,9 @@ async function greet() {
 
 <template>
   <main class="container">
+    <div>
+      <ApiDocumentation />
+    </div>
     <h1>Welcome to Tauri + Vue</h1>
 
     <div class="row">
@@ -24,7 +28,7 @@ async function greet() {
           src="/vite.svg"
           class="logo vite"
           alt="Vite logo"
-        >
+        />
       </a>
       <a
         href="https://tauri.app"
@@ -34,7 +38,7 @@ async function greet() {
           src="/tauri.svg"
           class="logo tauri"
           alt="Tauri logo"
-        >
+        />
       </a>
       <a
         href="https://vuejs.org/"
@@ -44,7 +48,7 @@ async function greet() {
           src="./assets/vue.svg"
           class="logo vue"
           alt="Vue logo"
-        >
+        />
       </a>
     </div>
     <p>Click on the Tauri, Vite, and Vue logos to learn more.</p>
@@ -57,10 +61,8 @@ async function greet() {
         id="greet-input"
         v-model="name"
         placeholder="Enter a name..."
-      >
-      <button type="submit">
-        Greet
-      </button>
+      />
+      <button type="submit">Greet</button>
     </form>
     <p>{{ greetMsg }}</p>
   </main>
