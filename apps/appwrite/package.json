@@ -1,0 +1,17 @@
+{
+  "name": "appwrite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "docker-compose.yml",
+  "scripts": {
+    "dev": "docker compose up -d",
+    "appwrite": "appwrite",
+    "codegen": "appwrite pull tables && appwrite types --language ts ../../packages/contracts/src/types"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "appwrite-cli": "^19.0.0"
+  }
+}

@@ -1,0 +1,18 @@
+---
+import type { GetStaticPaths } from "astro";
+import i18nConfig from "@i18n/i18n.config";
+import AppLayout from "@layouts/AppLayout.astro";
+import { t } from "@i18n/format";
+import AuthForm from "@components/vue/AuthForm.vue";
+
+export const getStaticPaths = (() => {
+  return i18nConfig.locales.map((locale) => ({
+    params: { locale },
+  }));
+}) satisfies GetStaticPaths;
+---
+
+<AppLayout>
+  <h1>{t("Index.Title.HelloWorld")}</h1>
+  <AuthForm client:load />
+</AppLayout>

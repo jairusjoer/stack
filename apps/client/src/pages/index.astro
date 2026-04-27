@@ -1,0 +1,9 @@
+<script>
+  import i18nConfig from "@i18n/i18n.config";
+
+  const matchedLocale = i18nConfig.locales.find((locale) =>
+    navigator.languages.includes(locale),
+  );
+
+  location.replace(`/${matchedLocale ?? i18nConfig.defaultLocale}/`);
+</script>
