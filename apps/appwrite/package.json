@@ -5,8 +5,8 @@
   "main": "docker-compose.yml",
   "scripts": {
     "dev": "docker compose up -d",
-    "appwrite": "appwrite",
-    "codegen": "appwrite pull tables && appwrite types --language ts ../../packages/contracts/src/types"
+    "codegen": "appwrite pull tables && appwrite types --language ts ../../packages/contracts/src/types",
+    "appwrite": "appwrite"
   },
   "keywords": [],
   "author": "",

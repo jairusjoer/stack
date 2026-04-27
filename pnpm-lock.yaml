@@ -4,6 +4,12 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    appwrite:
+      specifier: ^24.2.0
+      version: 24.2.0
+
 importers:
 
   .:
@@ -11,9 +17,6 @@ importers:
       turbo:
         specifier: ^2.9.6
         version: 2.9.6
-      typescript:
-        specifier: 6.0.3
-        version: 6.0.3
 
   apps/appwrite:
     devDependencies:
@@ -30,7 +33,7 @@ importers:
         specifier: ^4.2.4
         version: 4.2.4(vite@7.3.2(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)(tsx@4.20.5)(yaml@2.8.3))
       appwrite:
-        specifier: ^24.2.0
+        specifier: 'catalog:'
         version: 24.2.0
       astro:
         specifier: ^6.1.9
@@ -52,7 +55,7 @@ importers:
   packages/contracts:
     devDependencies:
       appwrite:
-        specifier: ^24.2.0
+        specifier: 'catalog:'
         version: 24.2.0
 
 packages:

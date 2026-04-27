@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev"
+    "dev": "turbo run dev",
+    "turbo": "turbo"
   },
   "devDependencies": {
-    "turbo": "^2.9.6",
-    "typescript": "6.0.3"
+    "turbo": "^2.9.6"
   },
   "packageManager": "pnpm@10.0.0",
   "engines": {
